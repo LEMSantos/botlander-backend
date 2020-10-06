@@ -1,4 +1,6 @@
-# botlander
+# Botlander - backend
+
+![Botlander](main-image.png)
 
 Your package short description.
 
@@ -36,10 +38,10 @@ To run the production version of the project
 docker-compose up -d prod
 ```
 
-To run the botlander module of the project
+To run the Botlander module of the project
 
 ```bash
-docker-compose exec prod python -m botlander
+docker-compose exec prod python -m Botlander
 ```
 
 ### Development
@@ -50,13 +52,13 @@ To run the project development environment
 docker-compose up -d dev
 ```
 
-To execute botlander development routines
+To execute Botlander development routines
 
 ```bash
 # [FOLDERS] = folder1 folder2 folder3 (optional to limit validation)
 docker-compose exec dev flake8 --max-complexity=10 [FOLDERS]
-docker-compose exec dev pytest --cov=botlander [MODULES_FOLDER] [TESTS_FOLDER]
-docker-compose exec dev python -m botlander
+docker-compose exec dev pytest --cov=Botlander [MODULES_FOLDER] [TESTS_FOLDER]
+docker-compose exec dev python -m Botlander
 ```
 
 ## Features
