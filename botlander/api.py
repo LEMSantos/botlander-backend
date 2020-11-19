@@ -24,12 +24,20 @@ app.config['JWT_SECRET_KEY'] = env.JWT_SECRET_KEY
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = env.JWT_REFRESH_TOKEN_EXPIRES
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = env.JWT_ACCESS_TOKEN_EXPIRES
 
-class HelloWorld(Resource):
-    def get(self):
-        return {'hello': 'world'}
+# user
+api.add_resource(UserResource, '/user/<string:user_id>')
+api.add_resource(UserResourceList, '/user')
 
 
-api.add_resource(HelloWorld, '/')
+# bot
+api.add_resource(BotResource, '/bot/<string:bot_id>')
+api.add_resource(BotResourceList, '/bot')
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+##### bot image
+api.add_resource(BotImageResource, '/bot/<string:bot_id>/image')
+
+
+# auth
+api.add_resource(LoginResource, '/auth/login')
+api.add_resource(RefreshResource, '/auth/refresh')
+api.add_resource(FreshLoginResource, '/auth/fresh-login')
