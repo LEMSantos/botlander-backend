@@ -1,2 +1,9 @@
 flask
 flask_restful
+flask-cors
+mongoengine
+Pillow
+validate_email
+flask-jwt-extended
+waitress
+paste
