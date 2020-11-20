@@ -23,6 +23,7 @@ CORS(app)
 app.config['JWT_SECRET_KEY'] = env.JWT_SECRET_KEY
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = env.JWT_REFRESH_TOKEN_EXPIRES
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = env.JWT_ACCESS_TOKEN_EXPIRES
+app.config['PROPAGATE_EXCEPTIONS'] = True
 
 # user
 api.add_resource(UserResource, '/user/<string:user_id>')
