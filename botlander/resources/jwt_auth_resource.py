@@ -32,7 +32,7 @@ def get_user_or_fail(identity, password):
         json.dumps({
             'message': 'Username or password is invalid.',
         }),
-        status=HTTPStatus.BAD_REQUEST,
+        status=HTTPStatus.UNAUTHORIZED,
         content_type='application/json',
     )
 
