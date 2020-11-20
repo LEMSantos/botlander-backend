@@ -68,19 +68,32 @@ class UserResourceList(Resource):
                 )
             )
 
-        try:
-            user = User(
-                name=args.get('name'),
-                lastname=args.get('lastname'),
-                username=args.get('username'),
-                email=args.get('email'),
-                password=generate_password_hash(args.get('password')),
-            )
-            user.save()
-        except NotUniqueError:
+        error_track = {
+            'email': False,
+            'username': False,
+        }
+
+        if User.objects(email=args.get('email')):
+            error_track['email'] = True
+        if User.objects(username=args.get('username')):
+            error_track['username'] = True
+
+        if error_track['username'] or error_track['email']:
             return {
-                'message': 'User already exists.'
+                'message': 'User already exists.',
+                'errors': {
+                    **error_track,
+                },
             }, HTTPStatus.CONFLICT
+
+        user = User(
+            name=args.get('name'),
+            lastname=args.get('lastname'),
+            username=args.get('username'),
+            email=args.get('email'),
+            password=generate_password_hash(args.get('password')),
+        )
+        user.save()
 
         return {
             'message': 'User created successfully.'
