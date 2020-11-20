@@ -45,7 +45,7 @@ class BotResource(Resource):
 
         return {
             'message': 'Bot found successfully',
-            'data': {
+            'bot': {
                 **payload,
             }
         }
@@ -81,7 +81,7 @@ class BotResource(Resource):
 
         return {
             'message': 'Bot updated_successfully.',
-            'data': {
+            'new_bot': {
                 **payload,
             }
         }
@@ -127,7 +127,7 @@ class BotResourceList(Resource):
             bot.pop('_id')
 
         return {
-            'data': payload,
+            'bots': payload,
         }
 
     @fresh_jwt_required
@@ -149,6 +149,8 @@ class BotResourceList(Resource):
         args.update({
             'user_id': bson.objectid.ObjectId(user_id)
         })
+
+        print(args)
 
         try:
             bot = Bot(

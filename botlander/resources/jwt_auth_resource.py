@@ -61,7 +61,8 @@ class LoginResource(Resource):
 
         return {
             'message': 'Successfully logged in.',
-            'data': {
+            'user': {
+                'id': str(user.id),
                 'name': user.name,
                 'lastname': user.lastname,
                 'username': user.username,

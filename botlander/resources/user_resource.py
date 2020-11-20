@@ -30,7 +30,7 @@ class UserResource(Resource):
 
         return {
             'message': 'User found successfully',
-            'data': {
+            'user': {
                 'id': str(user.id),
                 'name': user.name,
                 'lastname': user.lastname,
