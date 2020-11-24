@@ -66,6 +66,13 @@ class BotResource(Resource):
         args = parser.parse_args(strict=True)
 
         bot = bot_validation(bot_id)
+
+        if args.get('image') is not None:
+            bot.image.replace(args.get('image'))
+
+        args.pop('image')
+
+        bot.save()
         bot.update(**args)
         bot.reload()
 
@@ -149,8 +156,6 @@ class BotResourceList(Resource):
         args.update({
             'user_id': bson.objectid.ObjectId(user_id)
         })
-
-        print(args)
 
         try:
             bot = Bot(
