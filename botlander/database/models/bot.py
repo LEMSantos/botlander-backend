@@ -11,7 +11,9 @@ import uuid
 
 class Bot(Document):
 
-    __collection__ = 'bots'
+    meta = {
+        'collection': 'bots'
+    }
 
     name = StringField(
         max_length=100,

@@ -7,7 +7,9 @@ from mongoengine import (
 
 class User(Document):
 
-    __collection__ = 'users'
+    meta = {
+        'collection': 'users'
+    }
 
     name = StringField(max_length=100, required=True)
     lastname = StringField(max_length=100, required=True)
