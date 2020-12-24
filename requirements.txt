@@ -7,3 +7,4 @@ validate_email
 flask-jwt-extended
 waitress
 paste
+Click
