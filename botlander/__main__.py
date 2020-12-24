@@ -1,8 +1,6 @@
-from botlander.api import app
-from mongoengine import connect
-from paste.translogger import TransLogger
-import waitress
 import env
+from mongoengine import connect
+from botlander.cli import cli
 
 connect(
     env.DATABASE_NAME,
@@ -13,9 +11,4 @@ connect(
 )
 
 if __name__ == '__main__':
-    waitress.serve(
-        TransLogger(app, setup_console_handler=False),
-        host=env.WAITRESS_HOST,
-        port=env.WAITRESS_PORT,
-        threads=env.WAITRESS_THREADS,
-    )
+    cli()
