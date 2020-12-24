@@ -89,7 +89,7 @@ class UserResourceList(Resource):
         user = User(
             name=args.get('name'),
             lastname=args.get('lastname'),
-            username=args.get('username'),
+            username=args.get('username').lower(),
             email=args.get('email'),
             password=generate_password_hash(args.get('password')),
         )

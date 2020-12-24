@@ -38,7 +38,7 @@ def get_user_or_fail(identity, password):
 
     try:
         user = User.objects.get(
-            Q(username=identity) | Q(email=identity),
+            Q(username=identity.lower()) | Q(email=identity),
         )
     except User.DoesNotExist:
         abort(fail_response)
